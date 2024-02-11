@@ -219,6 +219,10 @@ class HomeController extends Controller
                 'nullable',
                 'date',
             ],
+            'no_surat' => [
+                'required',
+                'string',
+            ],
         ]);
 
         // Simpan data surat ke database
@@ -230,6 +234,7 @@ class HomeController extends Controller
 
         $surat = new Surat;
         $surat->alasan = $data['alasan'];
+        $surat->no_surat = $data['no_surat'];
         $surat->jenis_surat = $data['jenis_surat'];
         $surat->users_id = $user_id;
         $surat->karyawan_id = $karyawan->id;
@@ -338,6 +343,10 @@ class HomeController extends Controller
                     'nullable',
                     'date',
                 ],
+                'no_surat' => [
+                    'required',
+                    'string',
+                ],
             ]);
 
 
@@ -349,6 +358,7 @@ class HomeController extends Controller
 
             $surat = Surat::find($surat_id);
             $surat->alasan = $data['alasan'];
+            $surat->no_surat = $data['no_surat'];
             $surat->jenis_surat = $data['jenis_surat'];
             $surat->users_id = $user_id;
             $surat->karyawan_id = $karyawan->id;

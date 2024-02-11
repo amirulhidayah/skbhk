@@ -33,16 +33,16 @@ class Surat extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'users_id', 'id');
+        return $this->belongsTo(User::class, 'users_id', 'id')->withTrashed();
     }
 
     public function karyawan()
     {
-        return $this->belongsTo(Karyawan::class, 'karyawan_id', 'id');
+        return $this->belongsTo(Karyawan::class, 'karyawan_id', 'id')->withTrashed();
     }
 
     public function masterTtd()
     {
-        return $this->belongsTo(MasterTtd::class, 'master_ttd_id', 'id');
+        return $this->belongsTo(MasterTtd::class, 'master_ttd_id', 'id')->withTrashed();
     }
 }

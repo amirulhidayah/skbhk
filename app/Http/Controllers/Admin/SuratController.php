@@ -84,6 +84,10 @@ class SuratController extends Controller
             'master_ttd_id' => [
                 'required',
             ],
+            'no_surat' => [
+                'required',
+                'string',
+            ],
         ]);
 
         // Simpan data surat ke database
@@ -95,6 +99,7 @@ class SuratController extends Controller
 
         $surat = new Surat;
         $surat->alasan = $data['alasan'];
+        $surat->no_surat = $data['no_surat'];
         $surat->jenis_surat = $data['jenis_surat'];
         $surat->users_id = $user_id;
         $surat->karyawan_id = $karyawan->id;
@@ -199,6 +204,10 @@ class SuratController extends Controller
                     'nullable',
                     'date',
                 ],
+                'no_surat' => [
+                    'required',
+                    'string',
+                ],
             ]);
 
 
@@ -210,6 +219,7 @@ class SuratController extends Controller
 
             $surat = Surat::find($surat_id);
             $surat->alasan = $data['alasan'];
+            $surat->no_surat = $data['no_surat'];
             $surat->jenis_surat = $data['jenis_surat'];
             $surat->users_id = $user_id;
             $surat->karyawan_id = $karyawan->id;
