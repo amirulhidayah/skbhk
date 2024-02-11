@@ -106,9 +106,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="{{ '/lihatskbhk/' . $item->id }}"class="badge badge-secondary"
-                                            data-id="{{ $item->id }}" data-bs-toggle="tooltip" target="_blank">Lihat
-                                            SKBHK</a>
+                                        @if ($item->file_path)
+                                            <a href="{{ '/lihatskbhk/' . $item->id }}"class="badge badge-secondary"
+                                                data-id="{{ $item->id }}" data-bs-toggle="tooltip"
+                                                target="_blank">Lihat
+                                                SKBHK</a>
+                                        @endif
 
                                     </td>
                                 </tr>
