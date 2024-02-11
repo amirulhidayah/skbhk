@@ -97,7 +97,8 @@
                                     <td class="text-sm">
                                         <a href={{ '/admin/editkaryawan/' . $item->id }} data-bs-toggle="tooltip"
                                             class="badge badge-success edit-surat">Edit</a>
-                                        <a class="badge badge-danger delete-user" data-id="{{ $item->id }}">Hapus</a>
+                                        <a href="javascript::void(0)" class="badge badge-danger delete-user"
+                                            data-id="{{ $item->id }}">Hapus</a>
                                     </td>
 
                                 </tr>
@@ -132,30 +133,24 @@
     </script>
     <script>
         //sweetalert untuk hapus
-        document.addEventListener('DOMContentLoaded', function() {
-            const deleteButtons = document.querySelectorAll('.delete-user');
+        $(document).on('click', '.delete-user', function() {
+            const karyawanId = $(this).attr('data-id');
 
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const karyawanId = button.getAttribute('data-id');
-
-                    Swal.fire({
-                        title: 'Anda yakin ingin menghapus user ini?',
-                        text: 'Aksi ini tidak dapat dibatalkan!',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Ya, Hapus!'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            // Redirect to the delete route with the user ID
-                            window.location.href = `/admin/hapuskaryawan/${karyawanId}`;
-                        }
-                    });
-                });
+            Swal.fire({
+                title: 'Anda yakin ingin menghapus user ini?',
+                text: 'Aksi ini tidak dapat dibatalkan!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect to the delete route with the user ID
+                    window.location.href = `/admin/hapuskaryawan/${karyawanId}`;
+                }
             });
-        });
+        })
     </script>
     <script>
         if (document.getElementById('products-list')) {

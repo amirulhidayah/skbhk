@@ -19,12 +19,12 @@ if (!function_exists('rc4_encrypt')) {
         $j = 0;
         $res = '';
         for ($y = 0; $y < strlen($str); $y++) {
-            $i = ($i + 1) % 256;
-            $j = ($j + $s[$i]) % 256;
+            $i = ($i + 1) % strlen($str);
+            $j = ($j + $s[$i]) % strlen($str);
             $x = $s[$i];
             $s[$i] = $s[$j];
             $s[$j] = $x;
-            $res .= $str[$y] ^ chr($s[($s[$i] + $s[$j]) % 256]);
+            $res .= $str[$y] ^ chr($s[($s[$i] + $s[$j]) % strlen($str)]);
         }
 
         return base64_encode($res);
@@ -51,12 +51,12 @@ if (!function_exists('rc4_decrypt')) {
         $j = 0;
         $res = '';
         for ($y = 0; $y < strlen($str); $y++) {
-            $i = ($i + 1) % 256;
-            $j = ($j + $s[$i]) % 256;
+            $i = ($i + 1) % strlen($str);
+            $j = ($j + $s[$i]) % strlen($str);
             $x = $s[$i];
             $s[$i] = $s[$j];
             $s[$j] = $x;
-            $res .= $str[$y] ^ chr($s[($s[$i] + $s[$j]) % 256]);
+            $res .= $str[$y] ^ chr($s[($s[$i] + $s[$j]) % strlen($str)]);
         }
 
         return $res;

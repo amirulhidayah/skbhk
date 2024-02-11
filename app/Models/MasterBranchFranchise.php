@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MasterBranchFranchise extends Model
 {
-    protected $table ='master_branch_franchises';
-    protected $fillable =[
+    use SoftDeletes;
+
+    protected $table = 'master_branch_franchises';
+    protected $fillable = [
         'nama_pt',
         'alamat',
         'no_telp',

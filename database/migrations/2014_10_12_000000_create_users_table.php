@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('role_as')->default('0');
             $table->boolean('is_main_super_admin')->default(false);
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -67,7 +67,8 @@
                                             class="badge badge-info">Unduh</a>
                                         <a href={{ '/admin/editsurat/' . $item->id }} data-bs-toggle="tooltip"
                                             class="badge badge-success">Edit</a>
-                                        <a class="badge badge-danger delete-surat" data-id="{{ $item->id }}">Hapus</a>
+                                        <a href="javascript::void(0)" class="badge badge-danger delete-surat"
+                                            data-id="{{ $item->id }}">Hapus</a>
                                         <a href={{ '/admin/importskbhk/' . $item->id }} data-bs-toggle="modal"
                                             data-bs-target="#import" class="badge badge-dark">Unggah</a>
                                         <div class="modal fade" id="import" tabindex="-1" aria-hidden="true">
@@ -168,33 +169,29 @@
                 window.location.href = target.getAttribute('href');
             }
 
-            // Mendengarkan acara untuk tombol hapus dan reprint
-            document.getElementById('products-list').addEventListener('click', function(event) {
-                const target = event.target;
+            $(document).on('click', '.delete-surat', function() {
+                const suratId = $(this).attr('data-id');
 
-                if (target.classList.contains('delete-surat')) {
-                    const suratId = target.getAttribute('data-id');
+                Swal.fire({
+                    title: 'Anda yakin ingin menghapus surat ini?',
+                    text: 'Aksi ini tidak dapat dibatalkan!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Hapus!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = `/admin/hapussurat/${suratId}`;
+                    }
+                });
 
-                    Swal.fire({
-                        title: 'Anda yakin ingin menghapus surat ini?',
-                        text: 'Aksi ini tidak dapat dibatalkan!',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Ya, Hapus!'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = `/admin/hapussurat/${suratId}`;
-                        }
-                    });
-                }
-
-                if (target.classList.contains('reprint-link')) {
+                if ($(target).hasClass('reprint-link')) {
                     event.preventDefault();
                     handleReprint(target);
                 }
-            });
+            })
+
 
             // Periksa status di sessionStorage ketika halaman dimuat ulang
             var allReprintLinks = document.querySelectorAll('.reprint-link');

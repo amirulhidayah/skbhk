@@ -5,9 +5,12 @@ namespace App\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Karyawan extends Model
 {
+    use SoftDeletes;
+
     use HasFactory;
 
     protected $table = 'karyawan';
@@ -31,21 +34,21 @@ class Karyawan extends Model
 
     public function masteruser()
     {
-        return $this->belongsTo(User::class, 'masteruser_id', 'id');
+        return $this->belongsTo(User::class, 'masteruser_id', 'id')->withTrashed();
     }
 
     public function masterBranchRegulars()
     {
-        return $this->belongsTo(MasterBranchRegulars::class, 'master_branch_regulars_id', 'id');
+        return $this->belongsTo(MasterBranchRegulars::class, 'master_branch_regulars_id', 'id')->withTrashed();
     }
 
     public function masterBranchFranchises()
     {
-        return $this->belongsTo(MasterBranchFranchise::class, 'master_branch_franchises_id', 'id');
+        return $this->belongsTo(MasterBranchFranchise::class, 'master_branch_franchises_id', 'id')->withTrashed();
     }
 
     public function toko()
     {
-        return $this->belongsTo(Toko::class, 'toko_id', 'id');
+        return $this->belongsTo(Toko::class, 'toko_id', 'id')->withTrashed();
     }
 }

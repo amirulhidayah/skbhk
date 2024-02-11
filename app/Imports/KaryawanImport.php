@@ -58,7 +58,7 @@ class KaryawanImport implements ToModel, WithHeadingRow
             return null;
         }
 
-        $karyawan = Karyawan::where('nik', $nik)->first();
+        $karyawan = Karyawan::where('nik', rc4_encrypt($nik))->first();
         if (!$karyawan) $karyawan = new Karyawan();
         $karyawan->nik = rc4_encrypt($nik);
         $karyawan->nama =  $nama;

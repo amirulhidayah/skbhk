@@ -42,8 +42,10 @@
                                 <div class="row">
                                     <div class="form-group col-4">
                                         <label>NIK</label>
-                                        <input type="text" value="{{ $employee->nik }}" class="form-control"
+                                        <input type="text" value="{{ rc4_decrypt($employee->nik) }}" class="form-control"
                                             name="nik" readonly />
+                                        <input type="text" value="{{ rc4_decrypt($employee->nik) }}" class="form-control"
+                                            name="nik" hidden />
                                     </div>
                                     <div class="form-group col-4">
                                         <label>Nama</label>
@@ -64,19 +66,19 @@
                                     </div>
                                     <div class=" form-group col-4">
                                         <label>Branch</label>
-                                        <input type="text" value="{{ $employee->group_employee }}" class="form-control"
-                                            name="group_employee" readonly />
+                                        <input type="text" value="{{ $employee->masterBranchRegulars->branch }}"
+                                            class="form-control" name="group_employee" readonly />
                                     </div>
                                     <div class=" form-group col-4">
                                         <label>Nama PT/CV/Waralaba</label>
-                                        <input type="text" value="{{ $employee->nama_pt }}" class="form-control"
-                                            name="nama_pt" readonly />
+                                        <input type="text" value="{{ $employee->masterBranchFranchises->nama_pt }}"
+                                            class="form-control" name="nama_pt" readonly />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class=" form-group col-4">
                                         <label>Nama Toko</label>
-                                        <input class="form-control" type="text" value="{{ $employee->nama_toko }}"
+                                        <input class="form-control" type="text" value="{{ $employee->toko->nama_toko }}"
                                             name="nama_toko" readonly />
                                     </div>
                                     <div class="form-group col-4">
@@ -178,7 +180,7 @@
                                     </div>
                                     <div class="form-group col-4">
                                         <label>Penanda Tangan</label>
-                                        <select class="form-control" name="jabatan_ttd" required>
+                                        <select class="form-control" name="master_ttd_id" required>
                                             <option selected disabled>Pilih</option>
                                             @foreach ($masterTtd as $ttd)
                                                 <option value="{{ $ttd->id }}">{{ $ttd->nama }}</option>
@@ -196,8 +198,8 @@
                         </div>
 
                 </div>
-                @elseif (Session::has('error'))
-                            <p>{{ Session::get('error') }}</p>
+            @elseif (Session::has('error'))
+                <p>{{ Session::get('error') }}</p>
             @else
                 <p>No record found</p>
                 @endif

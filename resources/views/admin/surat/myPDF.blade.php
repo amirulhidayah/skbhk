@@ -47,7 +47,8 @@
     <div align="center">
         <b class="title">PT SUMBER ALFARIA TRIJAYA Tbk.</b>
         <p>
-            Branch {{ $surat->group_employee }}:{{ $surat->branch->alamat ?? '' }}
+            Branch
+            {{ $surat->karyawan->masterBranchRegulars->branch }}:{{ $surat->karyawan->masterBranchRegulars->alamat ?? '' }}
         </p>
         <hr>
     </div>

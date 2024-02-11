@@ -28,6 +28,7 @@ return new class extends Migration
             $table->date('tgl_pkwt')->nullable();
             $table->foreignId('master_branch_franchises_id')->nullable()->constrained('master_branch_franchises');
             $table->foreignId('toko_id')->nullable()->constrained('toko');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_toko');
             $table->string('alamat')->nullable();
             $table->foreignId('master_branch_franchises_id')->nullable()->constrained('master_branch_franchises');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

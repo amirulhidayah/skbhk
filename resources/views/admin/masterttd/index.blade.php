@@ -52,7 +52,8 @@
                                     <td class="text-sm">
                                         <a href={{ '/admin/editttd/' . $item->id }} data-bs-toggle="tooltip"
                                             class="badge badge-success edit-surat">Edit</a>
-                                        <a class="badge badge-danger delete-user" data-id="{{ $item->id }}">Hapus</a>
+                                        <a href="javascript::void(0)" class="badge badge-danger delete-user"
+                                            data-id="{{ $item->id }}">Hapus</a>
 
                                     </td>
                                 </tr>
@@ -174,30 +175,24 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.5') }}"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const deleteButtons = document.querySelectorAll('.delete-user');
+        $(document).on('click', '.delete-user', function() {
+            const masterttdId = $(this).attr('data-id');
 
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const masterttdId = button.getAttribute('data-id'); // Perbaikan disini
-
-                    Swal.fire({
-                        title: 'Anda yakin ingin menghapus data ini?',
-                        text: 'Aksi ini tidak dapat dibatalkan!',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Ya, Hapus!'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            // Redirect to the delete route with the data ID
-                            window.location.href = `/admin/hapusttd/${masterttdId}`;
-                        }
-                    });
-                });
+            Swal.fire({
+                title: 'Anda yakin ingin menghapus data ini?',
+                text: 'Aksi ini tidak dapat dibatalkan!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect to the delete route with the data ID
+                    window.location.href = `/admin/hapusttd/${masterttdId}`;
+                }
             });
-        });
+        })
     </script>
 
 

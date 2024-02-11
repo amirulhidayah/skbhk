@@ -14,8 +14,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-plain card-blog mt-3">
-                    <form class="multisteps-form__form mb-1" action="{{ url('editsurat/' . $surat->id) }}"
-                        method="POST">
+                    <form class="multisteps-form__form mb-1" action="{{ url('editsurat/' . $surat->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="card multisteps-form__panel p-4 border-radius-xl bg-white js-active"
@@ -24,100 +23,92 @@
                             <div class="row">
                                 <div class="form-group col-4">
                                     <label>NIK</label>
-                                    <input type="text" value="{{ $surat->nik }}" class="form-control" name="nik" required/>
+                                    <input type="text" value="{{ rc4_decrypt($employee->nik) }}" class="form-control"
+                                        name="nik" readonly />
+                                    <input type="text" value="{{ rc4_decrypt($employee->nik) }}" class="form-control"
+                                        name="nik" hidden />
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Nama</label>
-                                    <input type="text" value="{{ $surat->nama }}" class="form-control" name="nama" required/>
+                                    <input type="text" value="{{ $employee->nama }}" class="form-control" name="nama"
+                                        readonly />
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Tempat Lahir</label>
-                                    <input type="text" value="{{ $surat->tempat_lahir }}" class="form-control"
-                                        name="tempat_lahir" required/>
+                                    <input type="text" value="{{ $employee->tempat_lahir }}" class="form-control"
+                                        name="tempat_lahir" readonly />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-4">
                                     <label>Tanggal Lahir</label>
-                                    <input type="date" value="{{ $surat->tanggal_lahir }}" class="form-control"
-                                        name="tanggal_lahir" required />
+                                    <input type="date" value="{{ $employee->tanggal_lahir }}" class="form-control"
+                                        name="tanggal_lahir" readonly />
                                 </div>
                                 <div class=" form-group col-4">
                                     <label>Branch</label>
-                                    <select class="form-control" name="group_employee">
-                                      @foreach($masterbranchregulers as $masterbranch)
-                                          <option value="{{ $masterbranch->branch }}" {{ $masterbranch->branch== $surat->group_employee ? 'selected' : '' }}> {{ $masterbranch->branch }}</option>
-                                      @endforeach
-                                    </select>
+                                    <input type="text" value="{{ $employee->masterBranchRegulars->branch }}"
+                                        class="form-control" name="group_employee" readonly />
                                 </div>
                                 <div class=" form-group col-4">
                                     <label>Nama PT/CV/Waralaba</label>
-                                    <select class="form-control" name="nama_pt">
-                                      @foreach($masterbranchfranchise as $masterfranchise)
-                                          <option value="{{ $masterfranchise->nama_pt }}" {{ $masterfranchise->nama_pt ? 'selected' : '' }}> {{ $masterfranchise->nama_pt }}</option>
-                                      @endforeach
-                                    </select>
+                                    <input type="text" value="{{ $employee->masterBranchFranchises->nama_pt }}"
+                                        class="form-control" name="nama_pt" readonly />
                                 </div>
                             </div>
-                            <div class="row pb-3">
-                                <div class="form-group col-4">
+                            <div class="row">
+                                <div class=" form-group col-4">
                                     <label>Nama Toko</label>
-                                    <input type="text" value="{{ $surat->nama_toko }}" class="form-control"
-                                        name="nama_toko" />
+                                    <input class="form-control" type="text" value="{{ $employee->toko->nama_toko }}"
+                                        name="nama_toko" readonly />
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Pendidikan Terakhir</label>
-                                    <input type="text" value="{{ $surat->pendidikan }}" class="form-control"
-                                        name="pendidikan" required/>
+                                    <input type="text" value="{{ $employee->pendidikan }}" class="form-control"
+                                        name="pendidikan" readonly />
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Jabatan</label>
-                                    <input type="text" value="{{ $surat->jabatan }}" class="form-control"
-                                        name="jabatan" required />
+                                    <input type="text" value="{{ $employee->jabatan }}" class="form-control"
+                                        name="jabatan" readonly />
                                 </div>
                             </div>
                             <div class="row pb-3">
                                 <div class="form-group col-4">
                                     <label>No Surat</label>
-                                    <input type="text" value="{{ $surat->no_surat }}" class="form-control"
-                                        name="no_surat"required />
+                                    <input type="text" value="{{ $employee->no_surat }}" class="form-control"
+                                        name="no_surat" readonly />
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Tanggal Awal Hubungan Kerja</label>
-                                    <input type="date" value="{{ $surat->tgl_awal_hubker }}" class="form-control"
-                                        name="tgl_awal_hubker" required/>
+                                    <input type="date" value="{{ $employee->tgl_awal_hubker }}" class="form-control"
+                                        name="tgl_awal_hubker" readonly />
                                 </div>
-                                <div class="form-group col-4">
-                                    <label>Tanggal Berakhir Hubungan Kerja</label>
-                                    <input type="date" value="{{ $surat->tgl_akhir_hubker }}" class="form-control"
-                                        name="tgl_akhir_hubker" required/>
-                                </div>
-                            </div>    
-                            <div class="row pb-3">
                                 <div class="col-4">
                                     <label>Jenis Perjanjian Kerja</label>
-                                    <select class="form-control" name="jenis_pkwt">
-                                        <option value="">Pilih Salah Satu</option>
-                                        <?php $kategori = ['PKWT', 'PKWTT']; ?>
-                                        @foreach ($kategori as $kat)
-                                            <option value="{{ $kat }}" {{ isset($surat) && $surat->jenis_pkwt == $kat ? 'selected' : '' }}>
-                                                {{ $kat }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" value="{{ $employee->jenis_pkwt }}" class="form-control"
+                                        name="jenis_pkwt" readonly />
                                 </div>
+                            </div>
+                            <div class="row pb-3">
                                 <div class="col-4">
                                     <label>Nomor Perjanjian Kerja</label>
-                                    <input class="multisteps-form__input form-control" type="text" placeholder="001"
-                                        name="no_pkwt" value="{{ $surat->no_pkwt }}" />
+                                    <input type="text" value="{{ $employee->no_pkwt }}" class="form-control"
+                                        name="no_pkwt" readonly />
                                 </div>
                                 <div class="col-4">
                                     <label>Tanggal Perjanjian Kerja</label>
-                                    <input class="multisteps-form__input form-control" type="date" name="tgl_pkwt"
-                                        value="{{ $surat->tgl_pkwt }}" />
+                                    <input type="date" value="{{ $employee->tgl_pkwt }}" class="form-control"
+                                        name="tgl_pkwt" readonly />
+                                </div>
+                                <div class="form-group col-4">
+                                    <label>Tanggal Berakhir Hubungan Kerja</label>
+                                    <input type="date" value="{{ $employee->tgl_akhir_hubker }}" class="form-control"
+                                        name="tgl_akhir_hubker" />
                                 </div>
                             </div>
 
-                                
+
                             <div class="row-12">
                                 <h5 class="font-weight-bolder">Form wajib isi</h5>
                             </div>
@@ -181,17 +172,18 @@
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Jabatan Penanda Tangan</label>
-                                    <select class="form-control" name="jabatan_ttd" required>
+                                    <select class="form-control" name="master_ttd_id" required>
                                         <option selected disabled>Pilih Jabatan</option>
                                         @foreach ($masterTtd as $ttd)
-                                            <option value="{{ $ttd->id }}" {{ $ttd->id == $surat->jabatan_ttd ? 'selected' : '' }}>
+                                            <option value="{{ $ttd->id }}"
+                                                {{ $ttd->id == $surat->master_ttd_id ? 'selected' : '' }}>
                                                 {{ $ttd->nama }}</option>
                                         @endforeach
                                     </select>
-                                    
+
                                 </div>
                             </div>
-                          
+
                             <div class= "row">
                                 <div class="button-row d-flex mt-4">
                                     <a href="{{ '/surat' }}" class="btn bg-gradient-dark mb-0">Kembali</a>

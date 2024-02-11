@@ -77,6 +77,10 @@ class SuratController extends Controller
                 'required',
                 'string',
             ],
+            'tgl_akhir_hubker' => [
+                'nullable',
+                'date',
+            ],
             'master_ttd_id' => [
                 'required',
             ],
@@ -86,6 +90,8 @@ class SuratController extends Controller
         $data = $validatedData;
         $user_id = auth()->user()->id;
         $karyawan = Karyawan::where('nik', rc4_encrypt($request->nik))->first();
+        $karyawan->tgl_akhir_hubker = $data['tgl_akhir_hubker'];
+        $karyawan->save();
 
         $surat = new Surat;
         $surat->alasan = $data['alasan'];
@@ -189,12 +195,18 @@ class SuratController extends Controller
                 'master_ttd_id' => [
                     'required',
                 ],
+                'tgl_akhir_hubker' => [
+                    'nullable',
+                    'date',
+                ],
             ]);
 
 
             $data = $validatedData;
             $user_id = auth()->user()->id;
             $karyawan = Karyawan::where('nik', rc4_encrypt($request->nik))->first();
+            $karyawan->tgl_akhir_hubker = $data['tgl_akhir_hubker'];
+            $karyawan->save();
 
             $surat = Surat::find($surat_id);
             $surat->alasan = $data['alasan'];

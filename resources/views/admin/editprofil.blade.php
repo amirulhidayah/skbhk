@@ -49,10 +49,12 @@
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label>Branch</label>
-                                    <select class="form-control" name="branch">
+                                    <select class="form-control" name="master_branch_regulars_id">
                                         <option selected disabled>Pilih Branch</option>
                                         @foreach ($masterBranchRegulers as $branch)
-                                            <option value="{{ $branch->branch }}">{{ $branch->branch }}</option>
+                                            <option value="{{ $branch->id }}"
+                                                {{ $branch->id == $user->master_branch_regulars_id ? 'selected' : '' }}>
+                                                {{ $branch->branch }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -68,7 +70,9 @@
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label>Password Baru</label>
-                                    <input id="new_password" type="password" class="multisteps-form__input form-control @error('new_password') is-invalid @enderror" name="new_password" placeholder="Password Baru"/>
+                                    <input id="new_password" type="password"
+                                        class="multisteps-form__input form-control @error('new_password') is-invalid @enderror"
+                                        name="new_password" placeholder="Password Baru" />
                                     @error('new_password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -77,7 +81,9 @@
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label>Konfirmasi Password Baru</label>
-                                    <input id="new_password_confirmation" type="password" class="multisteps-form__input form-control" name="new_password_confirmation" placeholder="Konfirmasi Password Baru"/>
+                                    <input id="new_password_confirmation" type="password"
+                                        class="multisteps-form__input form-control" name="new_password_confirmation"
+                                        placeholder="Konfirmasi Password Baru" />
                                 </div>
                             </div>
                             <div class="button-row d-flex mt-4">

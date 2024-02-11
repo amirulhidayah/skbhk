@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('master_branch_regulars_id')->constrained('master_branch_regulars');
             $table->string('nama');
             $table->string('jabatan');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

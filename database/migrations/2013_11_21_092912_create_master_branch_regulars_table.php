@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('no_fax')->nullable();
             $table->string('kota')->nullable();
             $table->boolean('status')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
