@@ -27,7 +27,7 @@ class KaryawanEditRequest extends FormRequest
                 'required',
                 'string',
                 function ($attribute, $value, $fail) {
-                    $karyawan = Karyawan::where('nik', rc4_encrypt($value))->first();
+                    $karyawan = Karyawan::where('nik', rc4_encrypt($value))->where('nik', '!=', rc4_encrypt($value))->first();
                     if ($karyawan) {
                         $fail('The ' . $attribute . ' has already been taken.');
                     }
