@@ -40,10 +40,20 @@
             font-size: 18px;
             font-weight: 800;
         }
+
+        .logo {
+            width: 100px;
+            /* Adjust the width as needed */
+        }
     </style>
 </head>
 
 <body>
+    <div align= "center">
+        <a>
+            <img class="logo" src="assets/img/logos/logo-alfa.png">
+        </a>
+    </div>
     <div align="center">
         <b class="title">PT SUMBER ALFARIA TRIJAYA Tbk.</b>
         <p>
