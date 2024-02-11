@@ -23,7 +23,7 @@ class KaryawanTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'nama' => 'Amirul Hidayah',
-                'nik' => 'NHtCm8baMDU=',
+                'nik' => 'ADcCMQ54l5c=',
                 'tempat_lahir' => 'Parigi',
                 'tanggal_lahir' => '2024-02-01',
                 'pendidikan' => 'SMA',
@@ -37,8 +37,9 @@ class KaryawanTableSeeder extends Seeder
                 'tgl_pkwt' => '2024-02-01',
                 'master_branch_franchises_id' => 2,
                 'toko_id' => 4,
+                'deleted_at' => NULL,
                 'created_at' => '2024-02-10 14:55:50',
-                'updated_at' => '2024-02-10 15:13:36',
+                'updated_at' => '2024-02-11 19:00:54',
             ),
         ));
         
