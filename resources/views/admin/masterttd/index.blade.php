@@ -16,7 +16,7 @@
                     </div>
                     <div class="ms-auto my-auto mt-lg-0 mt-4">
                         <div class="ms-auto my-auto">
-                            <a href={{ url('admin/tambahttd') }} class="btn bg-gradient-info btn-sm mb-0">+&nbsp; tambah</a>
+                            <a href={{ url('admin/tambahttd') }} class="btn bg-gradient-info btn-sm mb-0">+&nbsp; Tambah</a>
                         </div>
                     </div>
                 </div>

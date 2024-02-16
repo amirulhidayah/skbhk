@@ -17,7 +17,7 @@
                     <div class="ms-auto my-auto mt-lg-0 mt-4">
                         <div class="ms-auto my-auto">
                             <a href={{ url('admin/tambahkaryawan') }} class="btn bg-gradient-info btn-sm mb-0">+&nbsp;
-                                tambah</a>
+                                Tambah</a>
                             <button type="button" class="btn btn-outline-primary btn-sm mb-0" data-bs-toggle="modal"
                                 data-bs-target="#import">
                                 Import
