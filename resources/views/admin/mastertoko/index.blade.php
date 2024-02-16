@@ -113,7 +113,7 @@
                 const karyawanId = $(this).attr('data-id');
 
                 Swal.fire({
-                    title: 'Anda yakin ingin menghapus user ini?',
+                    title: 'Anda yakin ingin menghapus toko ini?',
                     text: 'Aksi ini tidak dapat dibatalkan!',
                     icon: 'warning',
                     showCancelButton: true,

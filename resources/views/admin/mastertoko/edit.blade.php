@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                             <div class="button-row d-flex mt-4">
-                                <a href="{{ '/admin/masteruser' }}" class="btn bg-gradient-dark mb-0">Kembali</a>
+                                <a href="{{ '/admin/mastertoko' }}" class="btn bg-gradient-dark mb-0">Kembali</a>
                                 <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Submit">Edit
                                     Profile</button>
                             </div>

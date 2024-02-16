@@ -179,7 +179,7 @@
             const masterttdId = $(this).attr('data-id');
 
             Swal.fire({
-                title: 'Anda yakin ingin menghapus data ini?',
+                title: 'Anda yakin ingin menghapus TTD ini?',
                 text: 'Aksi ini tidak dapat dibatalkan!',
                 icon: 'warning',
                 showCancelButton: true,
