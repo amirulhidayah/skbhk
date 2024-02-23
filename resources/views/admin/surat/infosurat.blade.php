@@ -91,6 +91,14 @@
                                                         data-bs-target="#import"
                                                         class="badge badge-dark dropdown-item py-1">Unggah</a>
                                                 </li>
+                                                <li>
+                                                    @if ($item->file_path)
+                                                        <a href="#"class="badge badge-secondary dropdown-item"
+                                                            data-bs-toggle="tooltip" target="_blank"
+                                                            onClick="window.open('{{ url('upload/' . $item->file_path) }}', '_blank', 'fullscreen=yes'); return false;">Lihat
+                                                            SKBHK</a>
+                                                    @endif
+                                                </li>
                                             </ul>
                                         </div>
 
@@ -132,12 +140,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @if ($item->file_path)
-                                            <a href="#"class="badge badge-secondary" data-bs-toggle="tooltip"
-                                                target="_blank"
-                                                onClick="window.open('{{ url('upload/' . $item->file_path) }}', '_blank', 'fullscreen=yes'); return false;">Lihat
-                                                SKBHK</a>
-                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
