@@ -256,8 +256,20 @@
         <br>
         <tr>
             <td>
+                @php
+                    if ($surat->jenis_surat == 'Choice 1') {
+                        $jenisSurat = 'SKBHK 003';
+                    } elseif ($surat->jenis_surat == 'Choice 2') {
+                        $jenisSurat = 'SKBHK 004';
+                    } elseif ($surat->jenis_surat == 'Choice 3') {
+                        $jenisSurat = 'SKBHK 005';
+                    } elseif ($surat->jenis_surat == 'Choice 4') {
+                        $jenisSurat = 'SKBHK 005';
+                    }
+                @endphp
+
                 <img src="data:image/png;base64, {!! base64_encode(
-                    QrCode::format('svg')->size(40)->errorCorrection('H')->generate('SKBHK 003 - '),
+                    QrCode::format('svg')->size(40)->errorCorrection('H')->generate($jenisSurat . '-' . $surat->id),
                 ) !!}">
             </td>
         </tr>

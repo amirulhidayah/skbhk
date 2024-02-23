@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ImportController;
+use App\Http\Controllers\Admin\ScanQrCodeController;
 use App\Http\Controllers\ListController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -93,6 +94,9 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/edittoko/{mastertoko_id}', [App\Http\Controllers\Admin\TokoController::class, 'edit']);
     Route::put('/edittoko/{mastertoko_id}', [App\Http\Controllers\Admin\TokoController::class, 'update']);
     Route::get('/hapustoko/{mastertoko_id}', [App\Http\Controllers\Admin\TokoController::class, 'destroy']);
+
+    Route::get('scanqrcode', [ScanQrCodeController::class, 'index']);
+    Route::post('scanqrcode', [ScanQrCodeController::class, 'scanResult']);
 });
 
 Route::get('list/toko', [ListController::class, 'toko']);

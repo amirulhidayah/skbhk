@@ -18,26 +18,26 @@
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             </div>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-              <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
                 <div></div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
-                          <div class="sidenav-toggler-inner">
-                            <i class="sidenav-toggler-line bg-white"></i>
-                            <i class="sidenav-toggler-line bg-white"></i>
-                            <i class="sidenav-toggler-line bg-white"></i>
-                          </div>
+                            <div class="sidenav-toggler-inner">
+                                <i class="sidenav-toggler-line bg-white"></i>
+                                <i class="sidenav-toggler-line bg-white"></i>
+                                <i class="sidenav-toggler-line bg-white"></i>
+                            </div>
                         </a>
                     </li>
-                    <li class="nav-item dropdown align-items-center" >
+                    <li class="nav-item dropdown align-items-center">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle font-weight-bolder mb-0 text-white"
                             href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"><i class="fas fa-user"></i>{{ Auth::user()->name }}
+                            aria-expanded="false"><i class="fas fa-user"></i> {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{url('admin/editprofil')}}">
-                            {{ __('Edit Profil') }}
+                            <a class="dropdown-item" href="{{ url('admin/editprofil') }}">
+                                {{ __('Edit Profil') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
                                 @csrf
@@ -59,11 +59,6 @@
 </nav>
 
 
-<script src="{{asset('assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
-<script src="{{asset('assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
-<script src="{{asset('assets/js/argon-dashboard.min.js?v=2.0.5')}}"></script>
-
-
-
-
-
+<script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.5') }}"></script>

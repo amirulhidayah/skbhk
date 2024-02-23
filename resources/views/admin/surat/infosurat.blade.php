@@ -61,16 +61,41 @@
                                     <td class="small">{{ $item->user ? $item->user->name : 'Tidak ada informasi editor' }}
                                     </td>
                                     <td class="text-sm">
-                                        <a href="{{ '/admin/print/' . $item->id }}" data-id="{{ $item->id }}"
-                                            data-bs-toggle="tooltip" class="badge badge-primary reprint-link">Print</a>
-                                        <a href={{ '/admin/generate-pdf/' . $item->id }} data-bs-toggle="tooltip"
-                                            class="badge badge-info">Unduh</a>
-                                        <a href={{ '/admin/editsurat/' . $item->id }} data-bs-toggle="tooltip"
-                                            class="badge badge-success">Edit</a>
-                                        <a href="javascript::void(0)" class="badge badge-danger delete-surat"
-                                            data-id="{{ $item->id }}">Hapus</a>
-                                        <a href={{ '/admin/importskbhk/' . $item->id }} data-bs-toggle="modal"
-                                            data-bs-target="#import" class="badge badge-dark">Unggah</a>
+                                        <div class="dropdown">
+                                            <a href="#" class="btn bg-gradient-white dropdown-toggle "
+                                                data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                <i class="fas fa-ellipsis-h"></i>
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                                <li>
+                                                    <a href="{{ '/admin/print/' . $item->id }}"
+                                                        data-id="{{ $item->id }}" data-bs-toggle="tooltip"
+                                                        class="badge badge-primary reprint-link dropdown-item py-1">Print</a>
+                                                </li>
+                                                <li>
+                                                    <a href={{ '/admin/generate-pdf/' . $item->id }}
+                                                        data-bs-toggle="tooltip"
+                                                        class="badge badge-info dropdown-item py-1">Unduh</a>
+                                                </li>
+                                                <li>
+                                                    <a href={{ '/admin/editsurat/' . $item->id }} data-bs-toggle="tooltip"
+                                                        class="badge badge-success dropdown-item py-1">Edit</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript::void(0)"
+                                                        class="badge badge-danger delete-surat dropdown-item py-1"
+                                                        data-id="{{ $item->id }}">Hapus</a>
+                                                </li>
+                                                <li>
+                                                    <a href={{ '/admin/importskbhk/' . $item->id }} data-bs-toggle="modal"
+                                                        data-bs-target="#import"
+                                                        class="badge badge-dark dropdown-item py-1">Unggah</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+
+
                                         <div class="modal fade" id="import" tabindex="-1" aria-hidden="true">
                                             <div class="modal-dialog mt-lg-10">
                                                 <div class="modal-content">
