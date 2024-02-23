@@ -301,4 +301,8 @@ class SuratController extends Controller
             return redirect('admin/infosurat')->with('error', 'Surat tidak ditemukan.');
         }
     }
+    public function qrcode() 
+    {
+
+    }
 }

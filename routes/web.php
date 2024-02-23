@@ -55,7 +55,6 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::get('/infosurat', [App\Http\Controllers\Admin\SuratController::class, 'infosurat']);
     Route::get('/surat', [App\Http\Controllers\Admin\SuratController::class, 'index']);
-    Route::get('/generate-pdf/{surat_id}', [App\Http\Controllers\Admin\SuratController::class, 'generatePDF']);
     Route::get('/print/{surat_id}', [App\Http\Controllers\Admin\SuratController::class, 'printPDF']);
     Route::get('/tambahsurat', [App\Http\Controllers\Admin\SuratController::class, 'create']);
     Route::post('/tambahsurat', [App\Http\Controllers\Admin\SuratController::class, 'store']);
@@ -64,6 +63,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     route::get('/hapussurat/{surat_id}', [App\Http\Controllers\Admin\SuratController::class, 'destroy']);
     route::get('/lihatskbhk/{surat_id}', [App\Http\Controllers\Admin\SuratController::class, 'lihatpdf']);
     route::post('/importskbhk/{surat_id}', [App\Http\Controllers\Admin\SuratController::class, 'importpdf']);
+    Route::get('/qrcode', [App\Http\Controllers\Admin\SuratController::class, 'qrcode']);
+
     Route::get('/masterbranchreguler', [App\Http\Controllers\Admin\MasterBranchRegulerController::class, 'index']);
     Route::patch('/masterbranchreguler/{id}/update-status', [App\Http\Controllers\Admin\MasterBranchRegulerController::class, 'updateStatus']);
     Route::get('/tambahbranchreguler', [App\Http\Controllers\Admin\MasterBranchRegulerController::class, 'create']);
@@ -71,7 +72,6 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/editbranchreguler/{masterbranchreguler_id}', [App\Http\Controllers\Admin\MasterBranchRegulerController::class, 'edit']);
     Route::put('/editbranchreguler/{masterbranchreguler_id}', [App\Http\Controllers\Admin\MasterBranchRegulerController::class, 'update']);
     Route::get('/hapusbranchreguler/{masterbranchreguler_id}', [App\Http\Controllers\Admin\MasterBranchRegulerController::class, 'destroy']);
-
     Route::get('/masterbranchfranchise', [App\Http\Controllers\Admin\MasterBranchFranchiseController::class, 'index']);
     Route::post('/update-status/{id}', [App\Http\Controllers\Admin\MasterBranchFranchiseController::class, 'updateStatus']);
     Route::get('/tambahbranchfranchise', [App\Http\Controllers\Admin\MasterBranchFranchiseController::class, 'create']);

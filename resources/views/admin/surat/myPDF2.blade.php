@@ -16,7 +16,6 @@
         td {
             vertical-align: text-top;
         }
-
         p,
         td {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -266,13 +265,7 @@
             </td>
         </tr>
         <tr>
-        <tr>
-            <td>
-                <br>
-            </td>
-        </tr>
-        <tr>
-            <td>
+            <td class="tembusan">
                 Tembusan:
             </td>
         </tr>
@@ -286,6 +279,13 @@
                 2. {{ $surat->karyawan->masterBranchFranchises->nama_pt ?? '' }}
             </td>
         </tr>
+        <br>
+        <tr>
+            <td>
+                <img src="data:image/png;base64, {!! base64_encode(
+                    QrCode::format('svg')->size(40)->errorCorrection('H')->generate('SKBHK 003 - '),
+                ) !!}">
+            </td>
         </tr>
     </table>
 </body>

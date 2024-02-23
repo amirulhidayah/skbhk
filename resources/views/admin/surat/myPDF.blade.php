@@ -244,12 +244,6 @@
             </td>
         </tr>
         <tr>
-        <tr>
-            <td>
-                <br>
-            </td>
-        </tr>
-        <tr>
             <td>
                 Tembusan:
             </td>
@@ -259,6 +253,13 @@
                 1. Arsip
             </td>
         </tr>
+        <br>
+        <tr>
+            <td>
+                <img src="data:image/png;base64, {!! base64_encode(
+                    QrCode::format('svg')->size(40)->errorCorrection('H')->generate('SKBHK 003 - '),
+                ) !!}">
+            </td>
         </tr>
     </table>
 </body>
