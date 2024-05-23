@@ -73,7 +73,7 @@
                                                         class="badge badge-primary reprint-link dropdown-item py-1">Print</a>
                                                 </li>
                                                 <li>
-                                                    <a href={{ '/admin/generate-pdf/' . $item->id }}
+                                                    <a href="{{ '/generate-pdf' . '/' . $item->id }}"
                                                         data-bs-toggle="tooltip"
                                                         class="badge badge-info dropdown-item py-1">Unduh</a>
                                                 </li>
